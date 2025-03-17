@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日邀请函</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        @keyframes ripple {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        .pulse-effect {
+            animation: pulse 1s ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: twinkle 3s infinite alternate;
+        }
+        
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            transform: rotate(45deg);
+            animation: shoot 3s linear;
+            opacity: 0;
+        }
+        
+        @keyframes twinkle {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes shoot {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                opacity: 1;
+            }
+            20% {
+                opacity: 1;
+            }
+            30% {
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(200%) translateY(200%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-bg"></div>
+    
+    <!-- 添加信封元素 -->
+    <div class="envelope" id="envelope">
+        <div class="envelope-front"></div>
+    </div>
+    
+    <!-- 添加自定义提示框 -->
+    <div class="custom-dialog hidden" id="confirmDialog">
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <span class="dialog-emoji">😊</span>
+                <h3 class="dialog-title">温馨提示</h3>
+            </div>
+            <p class="dialog-message"></p>
+            <div class="dialog-buttons">
+                <button class="dialog-btn cancel-btn">再想想</button>
+                <button class="dialog-btn confirm-btn">确定关闭</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 添加访问次数提示框 -->
+    <div class="visit-message hidden" id="visitMessage">
+        <div class="visit-content">
+            <div class="visit-emoji">😊</div>
+            <p class="visit-text"></p>
+            <button class="visit-button" onclick="closeVisitMessage()">我知道啦</button>
+        </div>
+    </div>
+    
+    <!-- 添加装饰性背景元素 -->
+    <div class="decorative-bg">
+        <div class="floating-item" data-speed="2">🎂</div>
+        <div class="floating-item" data-speed="1.5">🎭</div>
+        <div class="floating-item" data-speed="2.5">🍽️</div>
+        <div class="floating-item" data-speed="1.8">🔍</div>
+        <div class="floating-item" data-speed="2.2">✨</div>
+        <div class="floating-item" data-speed="1.6">🌟</div>
+        <div class="floating-item" data-speed="2.3">🎉</div>
+        <div class="floating-item" data-speed="1.9">🎈</div>
+        <div class="floating-item" data-speed="2.1">🎁</div>
+        <div class="floating-item" data-speed="1.7">🎊</div>
+    </div>
+    
+    <!-- 修改邀请卡结构 -->
+    <div class="invitation-card" id="invitation">
+        <div class="letter-content">
+            <div id="password-section" class="password-section">
+                <h2 class="title">请输入密码</h2>
+                <input type="password" id="password-input" class="password-input" placeholder="请输入密码">
+                <button class="rsvp-button" onclick="checkPassword()">验证密码</button>
+            </div>
+
+            <div id="invitation-content" class="hidden">
+                <div class="header content-item">
+                    <div class="decoration">🎂</div>
+                    <h1 class="title">生日邀请函</h1>
+                    <p class="subtitle">诚挚邀请您参加我的生日派对</p>
+                </div>
+                
+                <div class="details">
+                    <p class="content-item">亲爱的朋友：</p>
+                    <p class="content-item">很高兴邀请您参加我的生日派对</p>
+                    <p class="content-item">时间：2025年3月29日 下午1:00</p>
+                    <p class="content-item">地点：武汉市市江夏区XX街XX号</p>
+                    <p class="content-item">诚挚期待您的到来，让我们一起分享欢乐时光！</p>
+                </div>
+
+                <div class="decoration content-item">✨</div>
+                
+                <button class="rsvp-button content-item">确认参加</button>
+            </div>
+        </div>
+        <button class="close-button" onclick="closeInvitation()"></button>
+    </div>
+
+    <!-- 时间轴部分 -->
+    <div id="timeline-container" class="timeline-container hidden">
+        <div class="timeline-item" data-section="intro">前言</div>
+        <div class="timeline-item" data-section="murder">剧本杀</div>
+        <div class="timeline-item" data-section="dinner">吃饭</div>
+        <div class="timeline-item" data-section="escape">密室</div>
+        <div class="timeline-item" data-section="home">回家</div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div id="content-sections" class="content-sections hidden">
+        <div id="intro" class="section">
+            <h2 class="section-title">🎉 开场前言</h2>
+            <div class="section-content">
+                <p class="highlight">亲爱的朋友们，欢迎来到我的生日派对！</p>
+                <p>今天我们将开启一段精彩的冒险之旅</p>
+                <p>充满了悬疑、美食和欢乐</p>
+                <p>让我们一起创造难忘的回忆吧！</p>
+            </div>
+        </div>
+
+        <div id="murder" class="section">
+            <h2 class="section-title">🎭 剧本杀环节</h2>
+            <div class="section-content">
+                <p class="highlight">第一站：沉浸式剧本杀体验</p>
+                <p>时间：13:00 - 17:00</p>
+                <p>地点：XX剧本杀俱乐部</p>
+                <p>准备好进入一个充满悬疑的故事了吗？</p>
+                <p>我们将在这里展开一场精彩的推理之旅</p>
+            </div>
+        </div>
+
+        <div id="dinner" class="section">
+            <h2 class="section-title">🍽️ 美食时光</h2>
+            <div class="section-content">
+                <p class="highlight">第二站：精致晚餐</p>
+                <p class="dinner-time">时间：17:30 - 20:00</p>
+                <p class="dinner-location">地点：XX餐厅</p>
+                <p class="dinner-desc">让我们一起享用美味的生日大餐</p>
+                <p class="dinner-mood">分享美食与欢乐的时光</p>
+            </div>
+        </div>
+
+        <div id="escape" class="section">
+            <h2 class="section-title">🔍 密室逃脱 <span class="secret-title">解</span></h2>
+            <div class="section-content">
+                <div class="escape-modules" id="escapeModules">
+                    <div class="escape-module" draggable="true" data-order="1">
+                        <p>让我们一起挑战最新的密室主题</p>
+                    </div>
+                    <div class="escape-module" draggable="true" data-order="2">
+                        <p>准备好你的智慧，一起解开谜题吧！</p>
+                    </div>
+                    <div class="escape-module" draggable="true" data-order="3">
+                        <p class="highlight">时间：20:30 - 22:30</p>
+                    </div>
+                    <div class="escape-module" draggable="true" data-order="4">
+                        <p>地点：XX密室逃脱</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="home" class="section">
+            <h2 class="section-title">🌙 温馨结束</h2>
+            <div class="section-content">
+                <p class="highlight" style="display: block !important; visibility: visible !important; opacity: 1 !important;">完美的一天即将结束</p>
+                <p>感谢大家的陪伴</p>
+                <p>让这一天成为最特别的记忆</p>
+                <p>期待下次再相聚！</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加雨滴容器 -->
+    <div class="rain-container" id="rainContainer"></div>
+    
+    <!-- 添加哭泣提示界面 -->
+    <div id="crying-message" class="crying-message hidden">
+        <div class="crying-content">
+            <div class="crying-emoji">😭</div>
+            <p class="crying-text">别走嘛～再多看看呗～</p>
+            <button class="crying-button" onclick="restoreLastView()">好吧，我再看看</button>
+        </div>
+    </div>
+
+    <!-- 添加加载指示器 -->
+    <div id="loading-indicator" class="loading-indicator hidden">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">内容加载中...</p>
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>
