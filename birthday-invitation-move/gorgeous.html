@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>华丽生日邀请函</title>
+    <link rel="stylesheet" href="gorgeous.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 3D背景效果 -->
+    <div class="parallax-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="clouds"></div>
+        <div class="glow"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+    </div>
+    
+    <!-- 信封元素 -->
+    <div class="envelope" id="envelope">
+        <div class="envelope-front">
+            <div class="envelope-shine"></div>
+            <div class="envelope-content">
+                <div class="envelope-icon">💌</div>
+                <div class="envelope-text">点击开启</div>
+            </div>
+        </div>
+        <div class="envelope-back"></div>
+    </div>
+    
+    <!-- 邀请卡结构 -->
+    <div class="invitation-card" id="invitation">
+        <div class="letter-content">
+            <div class="letter-decoration top"></div>
+            
+            <div id="password-section" class="password-section">
+                <button class="close-button" onclick="closePasswordSection()"></button>
+                <div class="password-header">
+                    <h2 class="title">请输入密码</h2>
+                    <div class="password-decoration">🔐</div>
+                </div>
+                <div class="password-input-container">
+                    <input type="password" id="password-input" class="password-input" placeholder="请输入密码">
+                    <div class="password-line"></div>
+                </div>
+                <button class="rsvp-button" onclick="checkPassword()">
+                    <span class="button-text">验证密码</span>
+                    <span class="button-icon">→</span>
+                </button>
+            </div>
+
+            <div id="invitation-content" class="hidden">
+                <button class="close-button" onclick="closeInvitation()"></button>
+                <div class="header content-item">
+                    <div class="decoration">🎂</div>
+                    <h1 class="title">生日邀请函</h1>
+                    <p class="subtitle">诚挚邀请您参加我的生日派对</p>
+                </div>
+                
+                <div class="details">
+                    <p class="content-item">亲爱的朋友：</p>
+                    <p class="content-item">很高兴邀请您参加我的生日派对</p>
+                    <p class="content-item">时间：2025年3月29日 下午1:00</p>
+                    <p class="content-item">地点：武汉市市江夏区XX街XX号</p>
+                    <p class="content-item">诚挚期待您的到来，让我们一起分享欢乐时光！</p>
+                </div>
+
+                <div class="rsvp-button-container">
+                    <button class="rsvp-button content-item">
+                        <span class="button-text">确认参加</span>
+                        <span class="button-icon">→</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="letter-decoration bottom"></div>
+        </div>
+    </div>
+
+    <!-- 时间轴部分 -->
+    <div id="timeline-container" class="timeline-container hidden">
+        <div class="timeline-item" data-section="intro">
+            <span class="timeline-icon">🎉</span>
+            <span class="timeline-text">前言</span>
+        </div>
+        <div class="timeline-item" data-section="murder">
+            <span class="timeline-icon">🎭</span>
+            <span class="timeline-text">剧本杀</span>
+        </div>
+        <div class="timeline-item" data-section="dinner">
+            <span class="timeline-icon">🍽️</span>
+            <span class="timeline-text">吃饭</span>
+        </div>
+        <div class="timeline-item" data-section="escape">
+            <span class="timeline-icon">🔍</span>
+            <span class="timeline-text">密室</span>
+        </div>
+        <div class="timeline-item" data-section="home">
+            <span class="timeline-icon">🌙</span>
+            <span class="timeline-text">回家</span>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div id="content-sections" class="content-sections hidden">
+        <div id="intro" class="section">
+            <div class="section-decoration">
+                <div class="decoration-item">✨</div>
+                <div class="decoration-item">🎉</div>
+                <div class="decoration-item">🎈</div>
+            </div>
+            <h2 class="section-title">🎉 开场前言</h2>
+            <div class="section-content">
+                <div class="intro-card">
+                    <div class="card-header">
+                        <span class="card-icon">🌟</span>
+                        <h3>温馨寄语</h3>
+                    </div>
+                    <p class="highlight">亲爱的朋友们，欢迎来到我的生日派对！</p>
+                    <p>今天我们将开启一段精彩的冒险之旅</p>
+                    <p>充满了悬疑、美食和欢乐</p>
+                    <p>让我们一起创造难忘的回忆吧！</p>
+                </div>
+                <div class="intro-timeline">
+                    <div class="timeline-point">
+                        <span class="time">13:00</span>
+                        <span class="event">剧本杀</span>
+                        <span class="description">开启悬疑之旅</span>
+                    </div>
+                    <div class="timeline-point">
+                        <span class="time">17:30</span>
+                        <span class="event">晚餐</span>
+                        <span class="description">共享美食时光</span>
+                    </div>
+                    <div class="timeline-point">
+                        <span class="time">20:30</span>
+                        <span class="event">密室逃脱</span>
+                        <span class="description">挑战解谜关卡</span>
+                    </div>
+                    <div class="timeline-point">
+                        <span class="time">22:30</span>
+                        <span class="event">温馨结束</span>
+                        <span class="description">温暖送别</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="murder" class="section">
+            <div class="section-decoration">
+                <div class="decoration-item">🎭</div>
+                <div class="decoration-item">🔍</div>
+                <div class="decoration-item">📚</div>
+            </div>
+            <h2 class="section-title">🎭 剧本杀环节</h2>
+            <div class="section-content">
+                <div class="murder-cards">
+                    <div class="murder-card story">
+                        <div class="card-header">
+                            <span class="card-icon">📖</span>
+                            <h3>剧本简介</h3>
+                        </div>
+                        <p class="highlight">《午夜庄园的秘密》</p>
+                        <p>一座神秘的古堡，一个百年的诅咒</p>
+                        <p>谁是真凶？谁在说谎？</p>
+                        <p>一切等待你来揭晓...</p>
+                    </div>
+                    <div class="murder-card roles">
+                        <div class="card-header">
+                            <span class="card-icon">👥</span>
+                            <h3>角色介绍</h3>
+                        </div>
+                        <div class="role-list">
+                            <div class="role-item">
+                                <span class="role-icon">👨‍💼</span>
+                                <span class="role-name">管家</span>
+                            </div>
+                            <div class="role-item">
+                                <span class="role-icon">👩‍🦰</span>
+                                <span class="role-name">千金</span>
+                            </div>
+                            <div class="role-item">
+                                <span class="role-icon">👨‍⚕️</span>
+                                <span class="role-name">医生</span>
+                            </div>
+                            <div class="role-item">
+                                <span class="role-icon">👩‍🍳</span>
+                                <span class="role-name">厨师</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="murder-card info">
+                        <div class="card-header">
+                            <span class="card-icon">📍</span>
+                            <h3>活动信息</h3>
+                        </div>
+                        <p>时间：13:00 - 17:00</p>
+                        <p>地点：XX剧本杀俱乐部</p>
+                        <p>难度：⭐⭐⭐⭐</p>
+                        <p>人数：6-8人</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="dinner" class="section">
+            <div class="section-decoration">
+                <div class="decoration-item">🍽️</div>
+                <div class="decoration-item">🍰</div>
+                <div class="decoration-item">🍷</div>
+            </div>
+            <h2 class="section-title">🍽️ 美食时光</h2>
+            <div class="section-content">
+                <div class="dinner-menu">
+                    <div class="menu-category appetizer">
+                        <h3>前菜 Appetizer</h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <span class="dish-name">法式蘑菇汤</span>
+                                <span class="dish-description">精选蘑菇，浓郁奶香</span>
+                            </div>
+                            <div class="menu-item">
+                                <span class="dish-name">凯撒沙拉</span>
+                                <span class="dish-description">新鲜生菜配特制酱料</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-category main">
+                        <h3>主菜 Main Course</h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <span class="dish-name">和牛牛排</span>
+                                <span class="dish-description">完美五分熟，搭配黑椒汁</span>
+                            </div>
+                            <div class="menu-item">
+                                <span class="dish-name">香煎三文鱼</span>
+                                <span class="dish-description">配以时令蔬菜</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-category dessert">
+                        <h3>甜点 Dessert</h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <span class="dish-name">生日蛋糕</span>
+                                <span class="dish-description">定制款巧克力慕斯</span>
+                            </div>
+                            <div class="menu-item">
+                                <span class="dish-name">马卡龙拼盘</span>
+                                <span class="dish-description">多种口味精选</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dinner-info">
+                    <div class="info-card">
+                        <span class="info-icon">⏰</span>
+                        <span class="info-text">17:30 - 20:00</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">📍</span>
+                        <span class="info-text">XX高级餐厅</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">🍷</span>
+                        <span class="info-text">红酒畅饮</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="escape" class="section">
+            <div class="section-decoration">
+                <div class="decoration-item">🔍</div>
+                <div class="decoration-item">🔐</div>
+                <div class="decoration-item">🔑</div>
+            </div>
+            <h2 class="section-title">🔍 密室逃脱</h2>
+            <div class="section-content">
+                <div class="escape-info">
+                    <div class="theme-card">
+                        <div class="card-header">
+                            <span class="card-icon">🎮</span>
+                            <h3>主题介绍</h3>
+                        </div>
+                        <p class="highlight">《失落的实验室》</p>
+                        <p>一间神秘的实验室</p>
+                        <p>一个惊人的发现</p>
+                        <p>60分钟，你能解开所有谜题吗？</p>
+                        <div class="hidden-clue" data-clue="first">第一个数字藏在这里：<span class="encrypted">⚡️2⚡️</span></div>
+                    </div>
+                    <div class="puzzle-preview">
+                        <div class="puzzle-item" data-puzzle="morse">
+                            <span class="puzzle-icon">📡</span>
+                            <span class="puzzle-name">摩斯密码</span>
+                            <div class="puzzle-content hidden">
+                                <p class="morse-code">... --.- ..- .- .-. .</p>
+                                <input type="text" class="puzzle-input" placeholder="请输入解密结果">
+                                <button class="check-button">验证</button>
+                                <div class="hidden-clue" data-clue="first">第一个数字藏在这里：<span class="encrypted">⚡️2⚡️</span></div>
+                            </div>
+                        </div>
+                        <div class="puzzle-item" data-puzzle="light">
+                            <span class="puzzle-icon">💡</span>
+                            <span class="puzzle-name">光线谜题</span>
+                            <div class="puzzle-content hidden">
+                                <div class="light-grid">
+                                    <div class="light" data-state="off"></div>
+                                    <div class="light" data-state="off"></div>
+                                    <div class="light" data-state="off"></div>
+                                    <div class="light" data-state="off"></div>
+                                </div>
+                                <div class="hidden-clue" data-clue="second">正确的顺序：<span class="encrypted">🌟8🌟</span></div>
+                            </div>
+                        </div>
+                        <div class="puzzle-item" data-puzzle="numbers">
+                            <span class="puzzle-icon">🔢</span>
+                            <span class="puzzle-name">数字推理</span>
+                            <div class="puzzle-content hidden">
+                                <p class="number-sequence">2, 3, 5, 7, 11, ?</p>
+                                <input type="number" class="puzzle-input" placeholder="下一个数是？">
+                                <button class="check-button">验证</button>
+                                <div class="hidden-clue" data-clue="third">第三个数字：<span class="encrypted">🎲5🎲</span></div>
+                            </div>
+                        </div>
+                        <div class="puzzle-item" data-puzzle="music">
+                            <span class="puzzle-icon">🎵</span>
+                            <span class="puzzle-name">音乐解谜</span>
+                            <div class="puzzle-content hidden">
+                                <div class="music-notes">
+                                    <div class="note" data-note="C">Do</div>
+                                    <div class="note" data-note="D">Re</div>
+                                    <div class="note" data-note="E">Mi</div>
+                                    <div class="note" data-note="F">Fa</div>
+                                </div>
+                                <div class="hidden-clue" data-clue="fourth">最后一个数字：<span class="encrypted">🎼3🎼</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="escape-details">
+                    <div class="detail-card">
+                        <span class="detail-icon">⏰</span>
+                        <span class="detail-text">时间：20:30 - 22:30</span>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-icon">📍</span>
+                        <span class="detail-text">地点：XX密室逃脱</span>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-icon">👥</span>
+                        <span class="detail-text">人数：4-6人</span>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-icon">⭐</span>
+                        <span class="detail-text">难度：中等</span>
+                    </div>
+                </div>
+                <div class="final-puzzle">
+                    <h3>最终密码</h3>
+                    <div class="code-input">
+                        <input type="number" maxlength="1" class="digit-input">
+                        <input type="number" maxlength="1" class="digit-input">
+                        <input type="number" maxlength="1" class="digit-input">
+                        <input type="number" maxlength="1" class="digit-input">
+                    </div>
+                    <button class="submit-code">提交密码</button>
+                    <div class="success-message hidden">
+                        <p>🎉 恭喜你成功解开所有谜题！</p>
+                        <p>这将是一场精彩的密室逃脱之旅！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="home" class="section">
+            <div class="section-decoration">
+                <div class="decoration-item">🌙</div>
+                <div class="decoration-item">✨</div>
+                <div class="decoration-item">💫</div>
+            </div>
+            <h2 class="section-title">🌙 温馨结束</h2>
+            <div class="section-content">
+                <div class="memory-wall">
+                    <h3>今日回忆</h3>
+                    <div class="memory-grid">
+                        <div class="memory-item">
+                            <span class="memory-icon">🎭</span>
+                            <p>精彩的剧本杀</p>
+                        </div>
+                        <div class="memory-item">
+                            <span class="memory-icon">🍽️</span>
+                            <p>美味的晚餐</p>
+                        </div>
+                        <div class="memory-item">
+                            <span class="memory-icon">🔍</span>
+                            <p>刺激的密室</p>
+                        </div>
+                        <div class="memory-item">
+                            <span class="memory-icon">🎂</span>
+                            <p>温馨的祝福</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="farewell-message">
+                    <p class="highlight">完美的一天即将结束</p>
+                    <p>感谢大家的陪伴</p>
+                    <p>让这一天成为最特别的记忆</p>
+                    <p>期待下次再相聚！</p>
+                </div>
+                <div class="photo-gallery">
+                    <h3>照片墙</h3>
+                    <div class="photo-grid">
+                        <div class="photo-placeholder">
+                            <span class="photo-icon">📸</span>
+                            <p>照片1</p>
+                        </div>
+                        <div class="photo-placeholder">
+                            <span class="photo-icon">📸</span>
+                            <p>照片2</p>
+                        </div>
+                        <div class="photo-placeholder">
+                            <span class="photo-icon">📸</span>
+                            <p>照片3</p>
+                        </div>
+                        <div class="photo-placeholder">
+                            <span class="photo-icon">📸</span>
+                            <p>照片4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 粒子效果容器 -->
+    <div class="particles-container" id="particlesContainer"></div>
+    
+    <!-- 哭泣提示界面 -->
+    <div id="crying-message" class="crying-message hidden">
+        <div class="crying-content">
+            <div class="crying-emoji">😭</div>
+            <p class="crying-text">别走嘛～再多看看呗～</p>
+            <button class="crying-button" onclick="restoreLastView()">
+                <span class="button-text">好吧，我再看看</span>
+                <span class="button-icon">💝</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 加载指示器 -->
+    <div id="loading-indicator" class="loading-indicator hidden">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">内容加载中...</p>
+    </div>
+
+    <!-- 浮动按钮 -->
+    <a href="index.html" class="float-button">
+        <span class="float-icon">✨</span>
+        <span class="float-text">返回经典版</span>
+    </a>
+
+    <script src="gorgeous.js"></script>
+</body>
+</html>
