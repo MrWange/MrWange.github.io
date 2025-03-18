@@ -1598,3 +1598,134 @@ body {
         gap: 0.6rem;
     }
 } 
+
+/* 谜题内容样式 */
+.puzzle-content {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.morse-code {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 1rem 0;
+    letter-spacing: 3px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    word-break: break-all;
+}
+
+.number-sequence {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 1rem 0;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    word-break: break-all;
+}
+
+.puzzle-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.puzzle-input:focus {
+    outline: none;
+    border-color: rgba(255, 107, 107, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.check-button {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.check-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+/* 移动端谜题优化 */
+@media screen and (max-width: 768px) {
+    .puzzle-content {
+        padding: 1rem;
+    }
+
+    .morse-code {
+        font-size: 1rem;
+        padding: 0.8rem;
+        margin: 0.8rem 0;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    .number-sequence {
+        font-size: 1rem;
+        padding: 0.8rem;
+        margin: 0.8rem 0;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    .puzzle-input {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+        margin: 0.8rem 0;
+    }
+
+    .check-button {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .puzzle-content {
+        padding: 0.8rem;
+    }
+
+    .morse-code {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+        margin: 0.6rem 0;
+        letter-spacing: 2px;
+    }
+
+    .number-sequence {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+        margin: 0.6rem 0;
+    }
+
+    .puzzle-input {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.85rem;
+        margin: 0.6rem 0;
+    }
+
+    .check-button {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+} 
