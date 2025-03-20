@@ -1,0 +1,14 @@
+安装依赖：
+npm install
+
+配置环境变量：
+编辑 .env 文件，设置你的数据库连接信息和其他配置。
+
+创建数据库：
+使用 database.sql 文件创建数据库和表。
+npm run init-db
+
+启动服务器：
+npm run dev
+
+
